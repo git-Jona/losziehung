@@ -1,4 +1,4 @@
-const CACHE = "losziehung-v2";
+const CACHE = "losziehung-v3";
 const FILES = ["./", "./index.html", "./manifest.json", "./logo.png",
                "./icon-180.png", "./icon-192.png", "./icon-512.png",
                "./teilnahmebedingungen.txt", "./datenschutz.txt"]; 
