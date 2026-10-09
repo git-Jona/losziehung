@@ -72,7 +72,8 @@ show(`<h3>Historie</h3><p class="mut">${S.hist.length} gezogen · ${w} Gewinne �
 try{const f=new File(["\ufeff"+csv],"losziehung.csv",{type:"text/csv"});if(navigator.canShare&&navigator.canShare({files:[f]}))return await navigator.share({files:[f]});await navigator.clipboard.writeText(csv);alert("In die Zwischenablage kopiert")}catch(e){}} function cfg(){const c=S.cfg; show(`<h3>Neu füllen / Zurücksetzen</h3><label>Lose insgesamt<input id="c1" type="number" min="1" value="${c.total}"></label><label>Gewinne (je Zeile: Anzahl x Text, z. B. 5 x 40 € Gutschein)<textarea id="c2" rows="4">${esc(c.prizes)}</textarea></label><label>Text auf den Nieten<input id="c3" value="${esc(c.nit)}"></label><label class="ck"><input id="c4" type="checkbox"> Historie ebenfalls löschen</label><p id="er" class="er"></p><div class="row"><button id="ok">Neu füllen</button></div>`); $("ok").onclick=()=>{const n={total:Math.max(1,+$("c1").value|0),prizes:$("c2").value,nit:$("c3").value||"Leider kein Gewinn"},p=build(n); if(typeof p==="string"){$("er").textContent=p;return}if(!confirm("Kugel wirklich neu füllen?"))return; S.cfg=n;S.pool=p;if($("c4").checked)S.hist=[];save();fillGlobe();ui();dlg.classList.remove("on")}}
 $("bh").onclick=()=>gate(hist);$("bs").onclick=()=>gate(cfg);
 async function doc(f,t){let x;try{const r=await fetch(f);if(!r.ok)throw 0;x=await r.text()}catch(e){x="Dokument konnte nicht geladen werden."}show(`<h3>${esc(t)}</h3><pre class="doc">${esc(x)}</pre>`)} document.querySelectorAll("[data-doc]").forEach(a=>a.onclick=e=>{e.preventDefault();doc(a.dataset.doc,a.textContent)});  
-$("chk").checked=false;$("chk").onchange=ui;
+$("chk").checked=false;
+["change","input","click"].forEach(ev=>$("chk").addEventListener(ev,ui));$("chk").onchange=ui;
 fillGlobe();ui();
 if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js");
