@@ -1,6 +1,7 @@
-const CACHE = "losziehung-v1";
+const CACHE = "losziehung-v2";
 const FILES = ["./", "./index.html", "./manifest.json", "./logo.png",
-               "./icon-180.png", "./icon-192.png", "./icon-512.png"];
+               "./icon-180.png", "./icon-192.png", "./icon-512.png",
+               "./teilnahmebedingungen.txt", "./datenschutz.txt"]; 
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c =>
