@@ -32,6 +32,12 @@ label{display:block;margin:10px 0;font-size:14px;color:var(--mut)}
 input,textarea{display:block;width:100%;margin-top:4px;padding:11px 12px;border:1px solid #d5d9e1;border-radius:12px;font:inherit;font-size:16px;color:var(--ink)}
 label.ck{display:flex;gap:8px;align-items:center}label.ck input{width:auto;margin:0} .row{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
 .er{color:var(--red);min-height:1em;margin:6px 0 0}.mut{color:var(--mut);margin:0 0 10px} .tb{max-height:50vh;overflow:auto;border-radius:12px;border:1px solid #eceef2} table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #eceef2} tr.w td{color:var(--red);font-weight:600}
+
+css .opt{display:flex;gap:8px;align-items:flex-start;max-width:min(620px,88vw);font-size:12px;line-height:1.4;color:var(--mut);text-align:left;cursor:pointer}
+.opt input{width:20px;height:20px;margin:0;padding:0;flex:none;accent-color:var(--red)}
+.opt a{color:var(--red);text-decoration:underline}
+pre.doc{white-space:pre-wrap;font:inherit;font-size:14px;line-height:1.5;margin:0;max-height:55vh;overflow:auto}
+  
 </style></head>
 <body>
 <header>
@@ -39,6 +45,9 @@ label.ck{display:flex;gap:8px;align-items:center}label.ck input{width:auto;margi
   <div class="tools"><span id="cnt"></span><button class="g" id="bh">Historie</button><button class="g" id="bs">Neu füllen</button></div> </header> <main>
   <div class="globe" id="g"></div>
   <button id="go">Los ziehen</button>
+    
+  <label class="opt"><input type="checkbox" id="chk" autocomplete="off"><span>Ja, ich möchte am Gewinnspiel teilnehmen. Ich akzeptiere die <a href="teilnahmebedingungen.txt" data-doc="teilnahmebedingungen.txt">Teilnahmebedingungen</a> und habe die <a href="datenschutz.txt" data-doc="datenschutz.txt">Datenschutzhinweise</a> zur Kenntnis genommen. Der Rechtsweg ist ausgeschlossen.</span></label>   
+    
 </main>
 <div id="ov"><div class="ball" id="ball"><div class="h t"></div><div class="h bt"></div><div class="slip" id="sl"></div></div><p class="hint">Zum Schließen die Kugel antippen</p></div> <div id="dlg"><div id="box"></div></div> <script> const $=id=>document.getElementById(id),K="losziehung_stand_v1",PW="Payment";
 const rnd=n=>crypto.getRandomValues(new Uint32Array(1))[0]%n; const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
